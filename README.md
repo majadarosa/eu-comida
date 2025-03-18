@@ -31,12 +31,14 @@ Antes de rodar o projeto, você precisa ter as seguintes ferramentas instaladas:
    ```sh
    git clone https://github.com/seu-usuario/eu-comida.git
    cd eu-comida
-
-1. **Instale as dependências e rode o projeto**:
+1. **Inicie o Docker**: no Windows pelo aplicativo desktop ou no Linux com o comando:
+   ```sh
+   sudo systemctl start docker
+2. **Instale as dependências e rode o projeto**:
    ```sh
    docker-compose up --build
 
-1. **O aplicativo estará disponível em: http://localhost:8080**
+3. **O aplicativo estará disponível em: http://localhost:8080**
 
 ## Documentação da API
 A documentação da API gerada automaticamente pelo Swagger/OpenAPI pode ser acessada em: http://localhost:8080/swagger-ui/index.html
