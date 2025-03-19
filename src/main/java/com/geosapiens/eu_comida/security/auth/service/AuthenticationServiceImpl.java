@@ -31,7 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Override
 	public JwtAuthenticationResponse signup(SigninRequest request) {
 		
-		Login user = new Login(request.getEmail(), passwordEncoder.encode(request.getPassword()));
+		Login user = new Login(request.getEmail(), passwordEncoder.encode(request.getPassword()), null);
 		
 		String jwt = jwtService.generateToken(user);
 		
@@ -47,7 +47,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 				
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         
-		Login login = new Login(request.getEmail(), request.getPassword());
+		Login login = new Login(request.getEmail(), request.getPassword(), null);
 		String jwt = jwtService.generateToken(login);
 		
 		JwtAuthenticationResponse authenticationResponse = new JwtAuthenticationResponse();

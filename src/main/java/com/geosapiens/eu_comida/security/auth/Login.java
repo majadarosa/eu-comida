@@ -1,9 +1,10 @@
 package com.geosapiens.eu_comida.security.auth;
 
 import java.util.Collection;
-
+import java.util.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class Login implements UserDetails{
 	
@@ -11,19 +12,20 @@ public class Login implements UserDetails{
 	private String email;
 	private String username;
 	private String password;
-	
+	private Role role;
 	
 
-	public Login(String email, String password) {
+	public Login(String email, String password, Role role) {
 		this.email = email;
 		this.username = email;
 		this.password = password;
+		this.role = role;
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
-	}
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority(role.getDescricao()));
+    }
 
 	@Override
 	public String getPassword() {
@@ -72,6 +74,14 @@ public class Login implements UserDetails{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

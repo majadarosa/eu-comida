@@ -28,4 +28,9 @@ public class PedidoController {
 	public Pedido buscarPedido(@PathVariable Long id) {
 		return pedidoService.buscarPedido(id);
 	}
+	
+	@GetMapping("/entrega/{id}")
+	public Pedido buscarPedidoEntrega(@PathVariable Long id) {
+		return pedidoService.buscarPedido(id);
+	}
 }

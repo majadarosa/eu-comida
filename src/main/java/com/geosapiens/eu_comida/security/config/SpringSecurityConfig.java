@@ -43,7 +43,10 @@ public class SpringSecurityConfig {
 			    .requestMatchers("/swagger-ui/**").permitAll()
 			    .requestMatchers("/swagger-resources/**").permitAll()
 			    .requestMatchers("/webjars/**").permitAll()
-				.anyRequest().authenticated())
+			    .requestMatchers("/pedidos").hasRole("ADMIN")
+			    .requestMatchers("/pedidos/entrega").hasAnyRole("ENTREGADOR", "ADMIN")
+				.anyRequest()
+				.authenticated())
 		.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		.authenticationProvider(authenticationProvider()).addFilterBefore(
 				jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
